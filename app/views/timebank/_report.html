@@ -1,0 +1,16 @@
+<% @timebank_list.each do |timebank_row| %>
+  <%= content_tag('H3',link_to(timebank_row[:project], :action => 'summary', :id => timebank_row[:project_id])) %>
+	<ul><li class="time_purchased">Time purchased: <%= timebank_row[:total_bank_hours]%></li>
+		<li class="time_burnt">Time burnt: <%= timebank_row[:total_time_entry_hours] %></li>
+		<li class="time_difference">Time difference: <% if timebank_row[:total_spread] < 0 %><span class="underwater"><%= timebank_row[:total_spread] %></span><% else %><span class="normal"><%= timebank_row[:total_spread] %></span><% end %></li>
+	</ul>
+<% end %>
+
+<% content_for(:header_tags) do %>
+<%= javascript_include_tag 'context_menu' %>
+<%= stylesheet_link_tag 'context_menu' %>
+<%= stylesheet_link_tag "timebank.css", :plugin => "chiliproject_timebank", :media => 'all' %>
+<% end %>
+
+<div id="context-menu" style="display: none;"></div>
+<%= javascript_tag "new ContextMenu('#{url_for(:controller => 'timebank', :action => 'context_menu')}')" %>

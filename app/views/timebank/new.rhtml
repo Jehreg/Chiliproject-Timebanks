@@ -1,0 +1,14 @@
+<% content_for(:header_tags) do %>
+<%= stylesheet_link_tag "timebank.css", :plugin => "chiliproject_timebank", :media => 'all' %>
+<%= javascript_include_tag 'timebank.js', :plugin => 'chiliproject_timebank' %>
+<% end %>
+
+<h1><%= l(:label_new_timebank) %></h1>
+
+<% labelled_tabular_form_for(:timebank, @timebank, :url => { :action => 'create', :id => @project}) do |form| %>
+
+<%= render(:partial => 'form', :object => form) %>
+
+<p><%= form.submit l(:button_create) %></p>
+
+<% end %>

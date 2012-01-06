@@ -1,0 +1,8 @@
+en:
+  timebank_title: "Time Banks report"
+  label_new_timebank: "Add a Time Bank entry"
+  label_new_timebank: "Enter a new Time Bank record"
+  label_timebank: "Time Bank"
+  field_date_in_effect: "Effective Date"
+  field_amount_of_time: "Hours purchased"
+  field_comment: "Comments"

@@ -1,0 +1,35 @@
+<h2><%= l(:timebank_title)%></h2>
+
+<%= timebank_menu %>
+
+<h3><%= @target_project.name %></h3>
+<table>
+<tr>
+<th>Invoice ID</th>
+<th>Date In Effect</th>
+<th>Amount of time purchased</th>
+<th>Comment</th>
+</tr>
+<% @timebanks.each do |timebank_row| %>
+	<tr>
+	<td class="time_purchased"><%= timebank_row.invoice_id %></td>
+	<td class="time_purchased"><%= timebank_row.date_in_effect %></td>
+	<td class="time_purchased"><%= timebank_row.amount_of_time %></td>
+	<td class="time_purchased"><%= timebank_row.comment %></td>
+	</tr>
+<% end %>
+</table>
+
+<% content_for(:header_tags) do %>
+<%= javascript_include_tag 'context_menu' %>
+<%= stylesheet_link_tag 'context_menu' %>
+<%= stylesheet_link_tag "timebank.css", :plugin => "chiliproject_timebank", :media => 'all' %>
+<% end %>
+
+<div id="context-menu" style="display: none;"></div>
+<%= javascript_tag "new ContextMenu('#{url_for(:controller => 'timebank', :action => 'context_menu')}')" %>
+
+<% content_for(:header_tags) do %>
+<%= stylesheet_link_tag "timebank.css", :plugin => "chiliproject_timebank", :media => 'all' %>
+<%= javascript_include_tag 'timebank.js', :plugin => 'chiliproject_timebank' %>
+<% end %>

@@ -1,0 +1,10 @@
+<h2><%= l(:timebank_title)%></h2>
+
+<%= timebank_menu %>
+
+<%= render :partial => 'report' %>
+
+<% content_for(:header_tags) do %>
+<%= stylesheet_link_tag "timebank.css", :plugin => "chiliproject_timebank", :media => 'all' %>
+<%= javascript_include_tag 'timebank.js', :plugin => 'chiliproject_timebank' %>
+<% end %>

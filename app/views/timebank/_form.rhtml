@@ -1,0 +1,27 @@
+<fieldset>
+<legend><%= l(:label_timebank) %></legend>
+<%= error_messages_for 'timebanks' %>
+
+
+<p>
+  <%= form.select :project_id, Project.find(:all, :order => 'name ASC').collect { |p| [h(p.name), p.id]}, { :include_blank => false} %>
+</p>
+
+<p>
+  <%= form.text_field :invoice_id %> ( From ledger. Use 9999 if not yet received. )
+</p>
+
+<p>
+  <%= form.text_field :date_in_effect, :size => 10 %><%= calendar_for('timebank_date_in_effect') %>
+</p>
+
+<p>
+  <%= form.text_field :amount_of_time %> (Can use a decimal)
+</p>
+
+<p>
+  <%= form.text_area :comment, :cols => 60 %>
+  <%= wikitoolbar_for 'timebank_comment' %>
+</p>
+
+</fieldset>
